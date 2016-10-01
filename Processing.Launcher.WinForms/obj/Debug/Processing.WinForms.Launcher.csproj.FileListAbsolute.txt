@@ -1,0 +1,1 @@
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\BitmapGraphics\BitmapGraphics\bin\Debug\Processing.Launcher.WinForms.exe.config

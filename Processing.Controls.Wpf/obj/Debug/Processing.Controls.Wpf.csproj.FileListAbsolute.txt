@@ -1,0 +1,14 @@
+C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Controls.Wpf\bin\Debug\Processing.Controls.Wpf.dll
+C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Controls.Wpf\bin\Debug\Processing.Controls.Wpf.pdb
+C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Controls.Wpf\bin\Debug\Processing.Core.dll
+C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Controls.Wpf\bin\Debug\Processing.Core.pdb
+C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Controls.Wpf\obj\Debug\Processing.Controls.Wpf.csprojResolveAssemblyReference.cache
+C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Controls.Wpf\obj\Debug\Processing.Controls.Wpf.Properties.Resources.resources
+C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Controls.Wpf\obj\Debug\Processing.Controls.Wpf.csproj.GenerateResource.Cache
+C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Controls.Wpf\obj\Debug\Processing.Controls.Wpf.dll
+C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Controls.Wpf\obj\Debug\Processing.Controls.Wpf.pdb
+C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Controls.Wpf\obj\Debug\Processing.Controls.Wpf_MarkupCompile.cache
+C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Controls.Wpf\obj\Debug\Processing.Controls.Wpf_MarkupCompile.lref
+C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Controls.Wpf\obj\Debug\Themes\Generic.baml
+C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Controls.Wpf\obj\Debug\Processing.Controls.Wpf.g.resources
+C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Controls.Wpf\obj\Debug\GeneratedInternalTypeHelper.g.cs

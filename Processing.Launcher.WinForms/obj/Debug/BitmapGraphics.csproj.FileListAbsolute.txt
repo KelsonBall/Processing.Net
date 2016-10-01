@@ -1,0 +1,11 @@
+c:\users\kelsba\documents\visual studio 2015\Projects\BitmapGraphics\BitmapGraphics\bin\Debug\BitmapGraphics.exe.config
+c:\users\kelsba\documents\visual studio 2015\Projects\BitmapGraphics\BitmapGraphics\bin\Debug\BitmapGraphics.exe
+c:\users\kelsba\documents\visual studio 2015\Projects\BitmapGraphics\BitmapGraphics\bin\Debug\BitmapGraphics.pdb
+c:\users\kelsba\documents\visual studio 2015\Projects\BitmapGraphics\BitmapGraphics\obj\Debug\BitmapGraphics.Form1.resources
+c:\users\kelsba\documents\visual studio 2015\Projects\BitmapGraphics\BitmapGraphics\obj\Debug\BitmapGraphics.Properties.Resources.resources
+c:\users\kelsba\documents\visual studio 2015\Projects\BitmapGraphics\BitmapGraphics\obj\Debug\BitmapGraphics.csproj.GenerateResource.Cache
+c:\users\kelsba\documents\visual studio 2015\Projects\BitmapGraphics\BitmapGraphics\obj\Debug\BitmapGraphics.exe
+c:\users\kelsba\documents\visual studio 2015\Projects\BitmapGraphics\BitmapGraphics\obj\Debug\BitmapGraphics.pdb
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\BitmapGraphics\BitmapGraphics\bin\Debug\BitmapGraphics.exe.config
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\BitmapGraphics\BitmapGraphics\obj\Debug\BitmapGraphics.exe
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\BitmapGraphics\BitmapGraphics\obj\Debug\BitmapGraphics.pdb

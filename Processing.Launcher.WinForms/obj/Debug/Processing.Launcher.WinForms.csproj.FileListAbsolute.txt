@@ -1,0 +1,35 @@
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\BitmapGraphics\BitmapGraphics\bin\Debug\Processing.Launcher.WinForms.exe.config
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\BitmapGraphics\BitmapGraphics\bin\Debug\Processing.Launcher.WinForms.exe
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\BitmapGraphics\BitmapGraphics\bin\Debug\Processing.Launcher.WinForms.pdb
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\BitmapGraphics\BitmapGraphics\bin\Debug\Processing.Core.dll
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\BitmapGraphics\BitmapGraphics\bin\Debug\Processing.Core.pdb
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\BitmapGraphics\BitmapGraphics\obj\Debug\Processing.Launcher.WinForms.csprojResolveAssemblyReference.cache
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\BitmapGraphics\BitmapGraphics\obj\Debug\Processing.Launcher.WinForms.Properties.Resources.resources
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\BitmapGraphics\BitmapGraphics\obj\Debug\Processing.Launcher.WinForms.csproj.GenerateResource.Cache
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\BitmapGraphics\BitmapGraphics\obj\Debug\Processing.Launcher.WinForms.exe
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\BitmapGraphics\BitmapGraphics\obj\Debug\Processing.Launcher.WinForms.pdb
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\BitmapGraphics\BitmapGraphics\obj\Debug\Processing.Launcher.WinForms.SketchForm.resources
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\Processing.Net\Processing.Launcher.WinForms\bin\Debug\Processing.Launcher.WinForms.exe.config
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\Processing.Net\Processing.Launcher.WinForms\bin\Debug\Processing.Launcher.WinForms.exe
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\Processing.Net\Processing.Launcher.WinForms\bin\Debug\Processing.Launcher.WinForms.pdb
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\Processing.Net\Processing.Launcher.WinForms\bin\Debug\Processing.Core.dll
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\Processing.Net\Processing.Launcher.WinForms\bin\Debug\Processing.Core.pdb
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\Processing.Net\Processing.Launcher.WinForms\obj\Debug\Processing.Launcher.WinForms.csprojResolveAssemblyReference.cache
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\Processing.Net\Processing.Launcher.WinForms\obj\Debug\Processing.Launcher.WinForms.SketchForm.resources
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\Processing.Net\Processing.Launcher.WinForms\obj\Debug\Processing.Launcher.WinForms.Properties.Resources.resources
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\Processing.Net\Processing.Launcher.WinForms\obj\Debug\Processing.Launcher.WinForms.csproj.GenerateResource.Cache
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\Processing.Net\Processing.Launcher.WinForms\obj\Debug\Processing.Launcher.WinForms.exe
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\Processing.Net\Processing.Launcher.WinForms\obj\Debug\Processing.Launcher.WinForms.pdb
+C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Launcher.WinForms\bin\Debug\Processing.Launcher.WinForms.exe.config
+C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Launcher.WinForms\bin\Debug\Processing.Launcher.WinForms.exe
+C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Launcher.WinForms\bin\Debug\Processing.Launcher.WinForms.pdb
+C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Launcher.WinForms\bin\Debug\Processing.Core.dll
+C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Launcher.WinForms\bin\Debug\Processing.Core.pdb
+C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Launcher.WinForms\obj\Debug\Processing.Launcher.WinForms.csprojResolveAssemblyReference.cache
+C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Launcher.WinForms\obj\Debug\Processing.Launcher.WinForms.SketchForm.resources
+C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Launcher.WinForms\obj\Debug\Processing.Launcher.WinForms.Properties.Resources.resources
+C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Launcher.WinForms\obj\Debug\Processing.Launcher.WinForms.csproj.GenerateResource.Cache
+C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Launcher.WinForms\obj\Debug\Processing.Launcher.WinForms.exe
+C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Launcher.WinForms\obj\Debug\Processing.Launcher.WinForms.pdb
+C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Launcher.WinForms\bin\Debug\Sketch.dll
+C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Launcher.WinForms\bin\Debug\Sketch.pdb

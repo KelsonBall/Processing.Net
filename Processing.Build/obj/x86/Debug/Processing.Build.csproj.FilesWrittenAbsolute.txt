@@ -1,0 +1,6 @@
+/home/kelson/Processing.Build/Processing.Build/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/home/kelson/Processing.Build/Processing.Build/bin/Debug/Processing.Build.exe.mdb
+/home/kelson/Processing.Build/Processing.Build/bin/Debug/Processing.Build.exe
+/home/kelson/Processing.Build/Processing.Build/obj/x86/Debug/Processing.Build.exe
+/home/kelson/Processing.Build/Processing.Build/obj/x86/Debug/Processing.Build.exe.mdb
+/home/kelson/Processing.Build/Processing.Build/bin/Debug/Processing.Core.dll

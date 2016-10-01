@@ -1,0 +1,21 @@
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\BitmapGraphics\ExampleUserCode\bin\Debug\ExampleUserCode.dll
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\BitmapGraphics\ExampleUserCode\bin\Debug\ExampleUserCode.pdb
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\BitmapGraphics\ExampleUserCode\bin\Debug\Processing.Core.dll
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\BitmapGraphics\ExampleUserCode\bin\Debug\Processing.Core.pdb
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\BitmapGraphics\ExampleUserCode\obj\Debug\ExampleUserCode.csprojResolveAssemblyReference.cache
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\BitmapGraphics\ExampleUserCode\obj\Debug\ExampleUserCode.dll
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\BitmapGraphics\ExampleUserCode\obj\Debug\ExampleUserCode.pdb
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\Processing.Net\ExampleUserCode\bin\Debug\ExampleUserCode.dll
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\Processing.Net\ExampleUserCode\bin\Debug\ExampleUserCode.pdb
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\Processing.Net\ExampleUserCode\bin\Debug\Processing.Core.dll
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\Processing.Net\ExampleUserCode\bin\Debug\Processing.Core.pdb
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\Processing.Net\ExampleUserCode\obj\Debug\ExampleUserCode.csprojResolveAssemblyReference.cache
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\Processing.Net\ExampleUserCode\obj\Debug\ExampleUserCode.dll
+C:\Users\kelso\Documents\Visual Studio 2015\Projects\Processing.Net\ExampleUserCode\obj\Debug\ExampleUserCode.pdb
+C:\Users\kelso\Documents\Repositories\Processing.Net\ExampleUserCode\bin\Debug\Processing.Core.dll
+C:\Users\kelso\Documents\Repositories\Processing.Net\ExampleUserCode\bin\Debug\Processing.Core.pdb
+C:\Users\kelso\Documents\Repositories\Processing.Net\ExampleUserCode\obj\Debug\ExampleUserCode.csprojResolveAssemblyReference.cache
+C:\Users\kelso\Documents\Repositories\Processing.Net\ExampleUserCode\bin\Debug\Sketch.dll
+C:\Users\kelso\Documents\Repositories\Processing.Net\ExampleUserCode\bin\Debug\Sketch.pdb
+C:\Users\kelso\Documents\Repositories\Processing.Net\ExampleUserCode\obj\Debug\Sketch.dll
+C:\Users\kelso\Documents\Repositories\Processing.Net\ExampleUserCode\obj\Debug\Sketch.pdb
