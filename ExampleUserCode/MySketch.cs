@@ -13,7 +13,7 @@ namespace ExampleUserCode
 
         public MySketch()
         {
-            Size(840, 660);
+            Size(800,800);
             Fill = Color.FromArgb(126, 255, 255, 255);
             // Inputs: x, y, mass, gravity
             springs = new List<Spring>();
@@ -36,7 +36,7 @@ namespace ExampleUserCode
                 spring.Display(last.x, last.y);
                 last = spring;
             }
-
+            Text("Hello, World", MouseX, MouseY);
         }
 
         public override void MousePressed(MouseButton button)

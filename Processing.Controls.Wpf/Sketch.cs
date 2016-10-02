@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
@@ -57,7 +58,7 @@ namespace Processing.Controls.Wpf
 
         private void DispatchBitmapSet(Bitmap image)
         {
-            Application.Current.Dispatcher.Invoke(() => Source = Sketch.Bitmap2BitmapImage(image));
+            try { Application.Current.Dispatcher.Invoke(() => Source = Sketch.Bitmap2BitmapImage(image)); } catch (TaskCanceledException) { }
         }
 
         public static void CanvasChanged(DependencyObject sketch, DependencyPropertyChangedEventArgs args)

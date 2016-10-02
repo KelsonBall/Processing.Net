@@ -130,6 +130,8 @@ namespace Processing.Core.Renderers
 
             if (style.Font != null)
                 style.Font = new Font(style.Font.FontFamily, style.FontSize ?? 12);
+            if (style.Font == null)
+                style.Font = _style.Font;
 
             this._style = style;
 
