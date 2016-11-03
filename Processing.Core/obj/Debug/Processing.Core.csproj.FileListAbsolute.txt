@@ -10,3 +10,4 @@ C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Core\bin\Debug\P
 C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Core\bin\Debug\Processing.Core.pdb
 C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Core\obj\Debug\Processing.Core.dll
 C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Core\obj\Debug\Processing.Core.pdb
+C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Core\obj\Debug\Processing.Core.csprojResolveAssemblyReference.cache

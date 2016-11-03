@@ -8,14 +8,16 @@ using System.Threading;
 using System.Windows.Forms;
 using Processing.Core.Renderers;
 using Processing.Core.Styles;
+using Processing.Core.Transforms;
 
 namespace Processing.Core
 {
-    public abstract class Canvas : IActionDispatchee
-    {
-        private ConcurrentQueue<Action> actions = new ConcurrentQueue<Action>();
+    public abstract class Canvas : IActionDispatchee, IColorable, ITransformable
+    {        
+        private readonly ConcurrentQueue<Action> preBuildActions = new ConcurrentQueue<Action>();
+        private readonly ConcurrentQueue<Action> drawActions = new ConcurrentQueue<Action>();
         private Action<Bitmap> SetImage;
-        private IRenderer _renderer;
+        private IRenderer<Bitmap> _renderer;
         private Bitmap image;
 
         private void DrawToForm()
@@ -41,11 +43,13 @@ namespace Processing.Core
 
         public void Size(int width, int height)
         {
-            Width = width;
-            Height = height;
-            image = new Bitmap(width, height);
-            _renderer = new GdiRenderer();
-            _renderer.ApplyStyle(Style.Default());
+            InvokeNonDrawAction(() =>
+            {
+                Width = width;
+                Height = height;
+                image = new Bitmap(width, height);
+                _renderer = new GdiRenderer();                
+            });
         }
 
 
@@ -69,22 +73,14 @@ namespace Processing.Core
                     button = MouseButton.None;
                     break;
             }
-            Invoke(() =>
-            {
-                MousePressed(button);
-                mousePressedInvokee = null;
-            });
+            InvokeDrawAction(() => MousePressed(button));
         }
 
         private void HandleMouseMoved(object sender, MouseEventArgs args)
         {
             MouseX = args.X;
             MouseY = args.Y;
-            Invoke(() =>
-            {
-                MouseMoved();
-                mouseMovedInvokee = null;
-            });
+            InvokeDrawAction(() => MouseMoved());
         }
 
         private void HandleMouseUp(object sender, MouseEventArgs args)
@@ -105,11 +101,7 @@ namespace Processing.Core
                     button = MouseButton.None;
                     break;
             }
-            Invoke(() =>
-            {
-                MouseReleased(button);
-                mouseReleasedInvokee = null;
-            });
+            InvokeDrawAction(() => MouseReleased(button));
         }
 
         #endregion
@@ -123,30 +115,27 @@ namespace Processing.Core
             Right
         }
 
-        public virtual void Setup()
+        protected virtual void Setup()
         {
 
         }
 
-        public virtual void Draw()
+        protected virtual void Draw()
         {
 
         }
 
-        private Action mousePressedInvokee;
-        public virtual void MousePressed(MouseButton button)
+        protected virtual void MousePressed(MouseButton button)
         {
 
         }
 
-        private Action mouseMovedInvokee;
-        public virtual void MouseMoved()
+        protected virtual void MouseMoved()
         {
 
         }
 
-        private Action mouseReleasedInvokee;
-        public virtual void MouseReleased(MouseButton button)
+        protected virtual void MouseReleased(MouseButton button)
         {
 
         }
@@ -188,23 +177,26 @@ namespace Processing.Core
         }
 
         private void InvokeSetup()
-        {
-            _renderer.BeginDraw(image);
+        {            
+            preBuildActions.Invoke();
             Setup();
+
+            _renderer.BeginDraw(image);
+            drawActions.Invoke();
             _renderer.EndDraw();
             DrawToForm();
         }
 
         private void InvokeDraw()
         {
-            _renderer.BeginDraw(image);
+
+            preBuildActions.Invoke();
+            
             if (Loop)
                 Draw();
 
-            Action action;
-            while (actions.TryDequeue(out action))
-                action?.Invoke();
-
+            _renderer.BeginDraw(image);
+            drawActions.Invoke();
             _renderer.EndDraw();
             FrameCount++;
             DrawToForm();
@@ -213,7 +205,11 @@ namespace Processing.Core
         #endregion
 
         #region Processing API
-
+        private IMatrix _matrix = new Matrix();
+        public IMatrix Matrix
+        {
+            get { return _matrix; }
+        }
 
         public int FrameRate
         {
@@ -225,7 +221,7 @@ namespace Processing.Core
             }
         }
         public ulong FrameCount { get; private set; }
-
+        
         public bool Loop { get; set; } = true;
 
         public int Width { get; private set; }
@@ -236,10 +232,11 @@ namespace Processing.Core
         public float MouseX
         {
             get { return _mouseX; }
-            set
+            internal set
             {
-                _pmouseX = _mouseX;
-                _mouseX = value;
+                    _pmouseX = _mouseX;
+                    _mouseX = value;
+                
             }
         }
         public float PMouseX { get { return _pmouseX; } }
@@ -249,10 +246,11 @@ namespace Processing.Core
         public float MouseY
         {
             get { return _mouseY; }
-            set
+            internal set
             {
-                _pmouseY = _mouseY;
-                _mouseY = value;
+
+                    _pmouseY = _mouseY;
+                    _mouseY = value;
             }
         }
         public float PMouseY { get { return _pmouseY; } }
@@ -267,12 +265,11 @@ namespace Processing.Core
             set
             {
                 _fill = value;
-                _renderer.ApplyStyle(new Style { Fill = value } );
+                InvokeDrawAction(() => _fill = value);
             }
         }
 
-        private Color _stroke;
-        private Brush _strokeBrush;
+        private Color _stroke;        
         public Color Stroke
         {
             get
@@ -282,96 +279,220 @@ namespace Processing.Core
             set
             {
                 _stroke = value;
-                _renderer.ApplyStyle(new Style { Stroke = value });
+                InvokeDrawAction(() => _stroke = value);
+            }
+        }
+
+        private float _strokeWeight = 1;
+        public float StrokeWeight
+        {
+            get { return _strokeWeight; }
+            set
+            {
+                _strokeWeight = value;
+                InvokeDrawAction(() => _strokeWeight = value);
+            }
+        }
+
+        private Font _font = new Font(FontFamily.GenericMonospace, 12);
+        public Font Font
+        {
+            get { return _font; }
+            set
+            {
+                _font = value;
+                InvokeDrawAction(() => _font = value);
+            }
+        }
+
+        private float _fontSize = 12;
+        public float FontSize
+        {
+            get { return _fontSize; }
+            set
+            {
+                _fontSize = value;
+                InvokeDrawAction(() => _fontSize = value);
+                Font = new Font(Font.FontFamily, value);                
             }
         }
 
 
         public void Background(Color color)
         {
-            _renderer.Background(color);
+            InvokeDrawAction(() =>
+            {
+                _renderer.Background(color);
+            });
         }
 
         public void Background(byte r, byte g, byte b)
         {
-            _renderer.Background(Color.FromArgb(0xFF, r, g, b));
+            InvokeDrawAction(() =>
+            {
+                _renderer.Background(Color.FromArgb(0xFF, r, g, b));
+            });
         }
 
         public void Background(byte v)
         {
-            _renderer.Background(Color.FromArgb(255, v, v, v));
+            InvokeDrawAction(() =>
+            {
+                _renderer.Background(Color.FromArgb(255, v, v, v));
+            });
         }
 
         public void Background(byte a, byte r, byte g, byte b)
         {
-            _renderer.Background(Color.FromArgb(a, r, g, b));
+            InvokeDrawAction(() =>
+            {
+                _renderer.Background(Color.FromArgb(a, r, g, b));
+            });
         }
 
         public void Ellipse(float x, float y, float width, float height)
         {
-            _renderer.Ellipse(x, y, width, height);
+            InvokeDrawAction(() =>
+            {
+                _renderer.Ellipse(x, y, width, height, GetStyle(), _matrix);
+            });
         }
 
         public void Rectangle(float x, float y, float width, float height)
         {
-            if (width < 0)
+            InvokeDrawAction(() =>
             {
-                x = x + width;
-                width = -width;
-            }
-            if (height < 0)
-            {
-                y = y + height;
-                height = -height;
-            }
-            _renderer.Rectangle(x, y, width, height);
+                if (width < 0)
+                {
+                    x = x + width;
+                    width = -width;
+                }
+                if (height < 0)
+                {
+                    y = y + height;
+                    height = -height;
+                }
+                _renderer.Rectangle(x, y, width, height, GetStyle(), _matrix);
+            });
         }
 
         public void Line(float x1, float y1, float x2, float y2)
         {
-            _renderer.Line(x1, y1, x2, y2);
+            InvokeDrawAction(() =>
+            {
+                _renderer.Line(x1, y1, x2, y2, GetStyle(), _matrix);
+            });
         }
 
         public void Text(string text, float x, float y)
         {
-            _renderer.Text(text, x, y);
+            InvokeDrawAction(() =>
+            {
+                _renderer.Text(text, x, y, GetStyle(), _matrix);
+            });
         }
 
         public void Image(Bitmap image, float x, float y)
         {
-            _renderer.Image(image, x, y);
+            InvokeDrawAction(() =>
+            {
+                _renderer.Image(image, x, y, GetStyle(), _matrix);
+            });
         }
 
         private bool shapeStarted = false;
         private Queue<PointF> shapeVertecies;
         public void StartShape()
         {
-            if (shapeStarted)
-                throw new Exception("Shape already started.");
-            shapeStarted = true;
-            shapeVertecies = new Queue<PointF>();
+            InvokeDrawAction(() =>
+            {
+                if (shapeStarted)
+                    throw new Exception("Shape already started.");
+                shapeStarted = true;
+                shapeVertecies = new Queue<PointF>();
+            });
         }
 
         public void Vertex(float x, float y)
         {
-            if (!shapeStarted)
-                throw new Exception("No shape started.");
-            shapeVertecies.Enqueue(new PointF(x, y));
+            InvokeDrawAction(() =>
+            {
+                if (!shapeStarted)
+                    throw new Exception("No shape started.");
+                shapeVertecies.Enqueue(new PointF(x, y));
+            });
         }
 
         public void EndShape()
         {
-            if (!shapeStarted)
-                throw new Exception("No shape started.");
-            _renderer.Shape(shapeVertecies.ToArray(), 0, 0);
-            shapeStarted = false;
-            shapeVertecies = null;
+            InvokeDrawAction(() =>
+            {
+                if (!shapeStarted)
+                    throw new Exception("No shape started.");
+                _renderer.Shape(shapeVertecies.ToArray(), 0, 0);
+                shapeStarted = false;
+                shapeVertecies = null;
+            });
+        }
+
+        public void PushMatrix()
+        {
+            InvokeDrawAction(() => { 
+                IMatrix matrix = new Matrix();
+                matrix.Parent = _matrix;
+                _matrix = matrix;
+            });
+        }
+
+        public void PopMatrix()
+        {
+            InvokeDrawAction(() =>
+            {
+                if (_matrix.Parent != null)
+                    _matrix = _matrix.Parent;
+            });
+        }
+
+        public void Translate(float x, float y)
+        {
+            InvokeDrawAction(() =>
+            {
+                _matrix.Translation += new PVector(x, y);
+            });
+        }
+
+        public void Rotate(float r)
+        {
+            InvokeDrawAction(() =>
+            {
+                _matrix.Rotation += r;
+            });
+        }
+
+        public void Scale(float s)
+        {
+            InvokeDrawAction(() =>
+            {
+                _matrix.Scale *= s;
+            });
         }
         #endregion
 
-        public void Invoke(Action action)
+        public void InvokeNonDrawAction(Action action)
         {
-            actions.Enqueue(action);
+            preBuildActions.Enqueue(action);
         }
+
+        public void InvokeDrawAction(Action action)
+        {
+            drawActions.Enqueue(action);
+        }
+
+        private IStyle GetStyle()
+        {
+            return new Style { Fill = this.Fill, Font = this.Font, FontSize = this.FontSize, Stroke = this.Stroke, StrokeWeight = this.StrokeWeight };
+        }
+
+        
     }
 }

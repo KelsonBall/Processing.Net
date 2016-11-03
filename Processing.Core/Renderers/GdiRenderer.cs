@@ -6,18 +6,15 @@ using Processing.Core.Transforms;
 
 namespace Processing.Core.Renderers
 {
-    internal class GdiRenderer : IRenderer, IDisposable
+    internal class GdiRenderer : IRenderer<Bitmap>, IDisposable
     {
-        private IStyle _style;
-        private Pen _pen;
-        private Brush _brush;
+        //private IStyle style;
+        //private Pen pen;
+        //private Brush brush;
         private Graphics _canvas;
 
-        public IRenderer BeginDraw(Bitmap source)
-        {
-            if (_style == null)
-                ApplyDefaultStyle();
-
+        public IRenderer<Bitmap> BeginDraw(Bitmap source)
+        {            
             // This worst line of code ever written:
             while (_canvas != null) Thread.Sleep(1);
 
@@ -36,7 +33,7 @@ namespace Processing.Core.Renderers
             return this;
         }
 
-        public IRenderer EndDraw()
+        public IRenderer<Bitmap> EndDraw()
         {
             if (_canvas != null)
             {
@@ -46,116 +43,129 @@ namespace Processing.Core.Renderers
             return this;
         }
 
-        public IRenderer Background(Color color)
+        public IRenderer<Bitmap> Background(Color color)
         {
             _canvas.Clear(color);
             return this;
         }
 
-        public IRenderer Triangle(float x1, float y1, float x2, float y2, float x3, float y3)
+        public IRenderer<Bitmap> Triangle(float x1, float y1, float x2, float y2, float x3, float y3, IStyle style, IMatrix matrix)
         {
+            ApplyMatrix(matrix);
             PointF[] points = { new PointF(x1, y1), new PointF(x2, y2), new PointF(x3, y3) };
-            _canvas.FillPolygon(_brush, points);
-            if (_style.StrokeWeight > 0)
-                _canvas.DrawPolygon(_pen, points);
+            using (var brush = GetBrush(style) )
+                _canvas.FillPolygon(brush, points);
+            if (style.StrokeWeight > 0)
+                using (var pen = GetPen(style))
+                    _canvas.DrawPolygon(pen, points);
+            _canvas.ResetTransform();
             return this;
         }
 
-        public IRenderer Rectangle(float x, float y, float width, float height)
+        public IRenderer<Bitmap> Rectangle(float x, float y, float width, float height, IStyle style, IMatrix matrix)
         {
-            _canvas.FillRectangle(_brush, x, y, width, height);
-            if (_style.StrokeWeight > 0)
-                _canvas.DrawRectangle(_pen, x, y, width, height);
+            ApplyMatrix(matrix);
+            using (var brush = GetBrush(style))
+                _canvas.FillRectangle(brush, x, y, width, height);
+            if (style.StrokeWeight > 0)
+                using (var pen = GetPen(style))
+                    _canvas.DrawRectangle(pen, x, y, width, height);
+            _canvas.ResetTransform();
             return this;
         }
 
-        public IRenderer Quad(float x1, float y1, float x2, float y2, float x3, float y3,
-            float x4, float y4)
+        public IRenderer<Bitmap> Quad(float x1, float y1, float x2, float y2, float x3, float y3,
+            float x4, float y4, IStyle style, IMatrix matrix)
         {
+            ApplyMatrix(matrix);
             PointF[] points = { new PointF(x1, y1), new PointF(x2, y2), new PointF(x3, y3), new PointF(x4, y4) };
-            _canvas.FillPolygon(_brush, points);
-            if (_style.StrokeWeight > 0)
-                _canvas.DrawPolygon(_pen, points);
+            using (var brush = GetBrush(style))
+                _canvas.FillPolygon(brush, points);
+            if (style.StrokeWeight > 0)
+                using (var pen = GetPen(style))
+                    _canvas.DrawPolygon(pen, points);
+            _canvas.ResetTransform();
             return this;
         }
 
-        public IRenderer Ellipse(float x, float y, float width, float height)
+        public IRenderer<Bitmap> Ellipse(float x, float y, float width, float height, IStyle style, IMatrix matrix)
         {
-            _canvas.FillEllipse(_brush, x, y, width, height);
-            if (_style.StrokeWeight > 0)
-                _canvas.DrawEllipse(_pen, x, y, width, height);
+            ApplyMatrix(matrix);
+            using (var brush = GetBrush(style))
+                _canvas.FillEllipse(brush, x, y, width, height);
+            if (style.StrokeWeight > 0)
+                using (var pen = GetPen(style))
+                    _canvas.DrawEllipse(pen, x, y, width, height);
+            _canvas.ResetTransform();
             return this;
         }
 
-        public IRenderer Line(float x1, float y1, float x2, float y2)
+        public IRenderer<Bitmap> Line(float x1, float y1, float x2, float y2, IStyle style, IMatrix matrix)
         {
-            _canvas.DrawLine(_pen, x1, y1, x2, y2);
+            ApplyMatrix(matrix);
+            using (var pen = GetPen(style))
+                _canvas.DrawLine(pen, x1, y1, x2, y2);
+            _canvas.ResetTransform();
             return this;
         }
 
-        public IRenderer Arc(float x, float y, float width, float height, float startAngle, float sweepAngle)
+        public IRenderer<Bitmap> Arc(float x, float y, float width, float height, float startAngle, float sweepAngle, IStyle style, IMatrix matrix)
         {
-            _canvas.DrawArc(_pen, x, y, width, height, startAngle, sweepAngle);
+            ApplyMatrix(matrix);
+            using (var pen = GetPen(style))
+                _canvas.DrawArc(pen, x, y, width, height, startAngle, sweepAngle);
+            _canvas.ResetTransform();
             return this;
         }
 
-        public IRenderer Image(Bitmap image, float x, float y)
+        public IRenderer<Bitmap> Image(Bitmap image, float x, float y, IStyle style, IMatrix matrix)
         {
+            ApplyMatrix(matrix);
             _canvas.DrawImage(image, x, y);
+            _canvas.ResetTransform();
             return this;
         }
 
-        public IRenderer Text(string text, float x, float y)
+        public IRenderer<Bitmap> Text(string text, float x, float y, IStyle style, IMatrix matrix)
         {
-            _canvas.DrawString(text, _style.Font, _brush, x, y);
+            ApplyMatrix(matrix);
+            using (var brush = GetBrush(style))
+                _canvas.DrawString(text, style.Font, brush, x, y);
+            _canvas.ResetTransform();
             return this;
         }
 
-        public IRenderer Shape(PointF[] vertecies, float x, float y)
+        public IRenderer<Bitmap> Shape(PointF[] vertecies, float x, float y, IStyle style, IMatrix matrix)
         {
+            ApplyMatrix(matrix);
             for (int i = 0; i < vertecies.Length; i++)
                 vertecies[i] = new PointF(vertecies[i].X + x, vertecies[i].Y + y);
-            _canvas.FillPolygon(_brush, vertecies);
-            _canvas.DrawPolygon(_pen, vertecies);
+            using (var brush = GetBrush(style))
+                _canvas.FillPolygon(brush, vertecies);
+            using (var pen = GetPen(style))
+                _canvas.DrawPolygon(pen, vertecies);
+            _canvas.ResetTransform();
             return this;
         }
+        
 
-        public IRenderer ApplyStyle(IStyle style)
+        private Brush GetBrush(IStyle style)
         {
-            if (style.Fill != null)
-                _brush = new SolidBrush((Color)style.Fill);
-
-            if (style.Stroke != null)
-                _pen = new Pen((Color)style.Stroke, style.StrokeWeight ?? 1);
-
-            if (style.Font != null)
-                style.Font = new Font(style.Font.FontFamily, style.FontSize ?? 12);
-            if (style.Font == null)
-                style.Font = _style.Font;
-
-            this._style = style;
-
-            return this;
+            return new SolidBrush(style.Fill ?? Color.White);
         }
 
-        private void ApplyDefaultStyle()
+        private Pen GetPen(IStyle style)
         {
-            ApplyStyle(new Style
-            {
-                Stroke = Color.Black,
-                Fill = Color.White,
-                Font =  SystemFonts.DefaultFont,
-                FontSize = 12,
-                StrokeWeight = 1
-            });
+            return new Pen(new SolidBrush(style.Stroke ?? Color.Black), style.StrokeWeight ?? 1f);
         }
 
-        public IRenderer ApplyTransform(IMatrix matrix)
+        private void ApplyMatrix(IMatrix matrix)
         {
-            throw new NotImplementedException();
+            if (matrix.Parent != null)
+                ApplyMatrix(matrix.Parent);
+            _canvas.RotateTransform((float)matrix.Rotation);
+            _canvas.TranslateTransform((float)matrix.Translation.X, (float)matrix.Translation.Y);            
         }
-
-
 
         public void Dispose()
         {
@@ -166,5 +176,10 @@ namespace Processing.Core.Renderers
         {
             Dispose();
         }
+    }
+
+    internal static class ColorExtensions
+    {
+
     }
 }

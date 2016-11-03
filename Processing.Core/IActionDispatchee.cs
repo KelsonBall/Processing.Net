@@ -4,6 +4,6 @@ namespace Processing.Core
 {
     public interface IActionDispatchee
     {
-        void Invoke(Action action);
+        void InvokeDrawAction(Action action);
     }
 }

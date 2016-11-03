@@ -23,7 +23,7 @@ namespace ExampleUserCode
             }
         }
 
-        public override void Draw()
+        protected override void Draw()
         {
             Background(Color.Black);
 
@@ -39,7 +39,7 @@ namespace ExampleUserCode
             Text("Hello, World", MouseX, MouseY);
         }
 
-        public override void MousePressed(MouseButton button)
+        protected override void MousePressed(MouseButton button)
         {
             if (button == MouseButton.Right)
             {
