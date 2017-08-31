@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Processing.Controls.Wpf</id>
+    <version>0.1.0</version>
+    <title>Processing Wpf Control</title>
+    <authors>Kelson Ball</authors>
+    <owners>Kelson Ball</owners>
+    <licenseUrl>https://github.com/KelsonBall/Processing.Net/blob/master/LICENSE.md</licenseUrl>
+    <projectUrl>https://github.com/KelsonBall/Processing.Net</projectUrl>
+    <iconUrl>https://avatars1.githubusercontent.com/u/7193540</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Provides a Sketch control that allows drawing with the Processing IDE in Wpf Applications.</description>
+    <releaseNotes>Partial core implementation.</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>Processing Wpf Control</tags>
+  </metadata>
+</package>

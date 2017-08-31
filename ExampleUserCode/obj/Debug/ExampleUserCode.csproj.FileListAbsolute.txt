@@ -19,3 +19,10 @@ C:\Users\kelso\Documents\Repositories\Processing.Net\ExampleUserCode\bin\Debug\S
 C:\Users\kelso\Documents\Repositories\Processing.Net\ExampleUserCode\bin\Debug\Sketch.pdb
 C:\Users\kelso\Documents\Repositories\Processing.Net\ExampleUserCode\obj\Debug\Sketch.dll
 C:\Users\kelso\Documents\Repositories\Processing.Net\ExampleUserCode\obj\Debug\Sketch.pdb
+D:\kelso\Repositories\Processing.Net\ExampleUserCode\bin\Debug\Sketch.dll
+D:\kelso\Repositories\Processing.Net\ExampleUserCode\bin\Debug\Sketch.pdb
+D:\kelso\Repositories\Processing.Net\ExampleUserCode\bin\Debug\Processing.Core.dll
+D:\kelso\Repositories\Processing.Net\ExampleUserCode\bin\Debug\Processing.Core.pdb
+D:\kelso\Repositories\Processing.Net\ExampleUserCode\obj\Debug\ExampleUserCode.csprojResolveAssemblyReference.cache
+D:\kelso\Repositories\Processing.Net\ExampleUserCode\obj\Debug\Sketch.dll
+D:\kelso\Repositories\Processing.Net\ExampleUserCode\obj\Debug\Sketch.pdb

@@ -33,3 +33,16 @@ C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Launcher.WinForm
 C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Launcher.WinForms\obj\Debug\Processing.Launcher.WinForms.pdb
 C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Launcher.WinForms\bin\Debug\Sketch.dll
 C:\Users\kelso\Documents\Repositories\Processing.Net\Processing.Launcher.WinForms\bin\Debug\Sketch.pdb
+D:\kelso\Repositories\Processing.Net\Processing.Launcher.WinForms\bin\Debug\Processing.Launcher.WinForms.exe.config
+D:\kelso\Repositories\Processing.Net\Processing.Launcher.WinForms\bin\Debug\Processing.Launcher.WinForms.exe
+D:\kelso\Repositories\Processing.Net\Processing.Launcher.WinForms\bin\Debug\Processing.Launcher.WinForms.pdb
+D:\kelso\Repositories\Processing.Net\Processing.Launcher.WinForms\bin\Debug\Processing.Core.dll
+D:\kelso\Repositories\Processing.Net\Processing.Launcher.WinForms\bin\Debug\Sketch.dll
+D:\kelso\Repositories\Processing.Net\Processing.Launcher.WinForms\bin\Debug\Sketch.pdb
+D:\kelso\Repositories\Processing.Net\Processing.Launcher.WinForms\bin\Debug\Processing.Core.pdb
+D:\kelso\Repositories\Processing.Net\Processing.Launcher.WinForms\obj\Debug\Processing.Launcher.WinForms.csprojResolveAssemblyReference.cache
+D:\kelso\Repositories\Processing.Net\Processing.Launcher.WinForms\obj\Debug\Processing.Launcher.WinForms.SketchForm.resources
+D:\kelso\Repositories\Processing.Net\Processing.Launcher.WinForms\obj\Debug\Processing.Launcher.WinForms.Properties.Resources.resources
+D:\kelso\Repositories\Processing.Net\Processing.Launcher.WinForms\obj\Debug\Processing.Launcher.WinForms.csproj.GenerateResource.Cache
+D:\kelso\Repositories\Processing.Net\Processing.Launcher.WinForms\obj\Debug\Processing.Launcher.WinForms.exe
+D:\kelso\Repositories\Processing.Net\Processing.Launcher.WinForms\obj\Debug\Processing.Launcher.WinForms.pdb
