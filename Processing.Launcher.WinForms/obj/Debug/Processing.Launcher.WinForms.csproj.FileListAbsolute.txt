@@ -46,3 +46,4 @@ D:\kelso\Repositories\Processing.Net\Processing.Launcher.WinForms\obj\Debug\Proc
 D:\kelso\Repositories\Processing.Net\Processing.Launcher.WinForms\obj\Debug\Processing.Launcher.WinForms.csproj.GenerateResource.Cache
 D:\kelso\Repositories\Processing.Net\Processing.Launcher.WinForms\obj\Debug\Processing.Launcher.WinForms.exe
 D:\kelso\Repositories\Processing.Net\Processing.Launcher.WinForms\obj\Debug\Processing.Launcher.WinForms.pdb
+D:\kelso\Repositories\Processing.Net\Processing.Launcher.WinForms\obj\Debug\Processing.Launcher.WinForms.csproj.CoreCompileInputs.cache

@@ -26,3 +26,4 @@ D:\kelso\Repositories\Processing.Net\ExampleUserCode\bin\Debug\Processing.Core.p
 D:\kelso\Repositories\Processing.Net\ExampleUserCode\obj\Debug\ExampleUserCode.csprojResolveAssemblyReference.cache
 D:\kelso\Repositories\Processing.Net\ExampleUserCode\obj\Debug\Sketch.dll
 D:\kelso\Repositories\Processing.Net\ExampleUserCode\obj\Debug\Sketch.pdb
+D:\kelso\Repositories\Processing.Net\ExampleUserCode\obj\Debug\ExampleUserCode.csproj.CoreCompileInputs.cache

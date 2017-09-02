@@ -15,3 +15,5 @@ D:\kelso\Repositories\Processing.Net\Processing.Core\bin\Debug\Processing.Core.d
 D:\kelso\Repositories\Processing.Net\Processing.Core\bin\Debug\Processing.Core.pdb
 D:\kelso\Repositories\Processing.Net\Processing.Core\obj\Debug\Processing.Core.dll
 D:\kelso\Repositories\Processing.Net\Processing.Core\obj\Debug\Processing.Core.pdb
+D:\kelso\Repositories\Processing.Net\Processing.Core\obj\Debug\Processing.Core.csprojResolveAssemblyReference.cache
+D:\kelso\Repositories\Processing.Net\Processing.Core\obj\Debug\Processing.Core.csproj.CoreCompileInputs.cache

@@ -31,7 +31,7 @@ namespace Processing.OpenTk.Core
 
                 for (int x = 0; x < width; x++)
                     for (int y = 0; y < height; y++)
-                        pixelData[x, y] = new Color4(color.R, color.G, color.B, OpacityAt(x, y)).ToRgbaIntegerFormat();
+                        pixelData[x, y] =  new Color4(color.R, color.G, color.B, OpacityAt(x, y)).ToRgbaIntegerFormat();
 
                 Texture2d texture = new Texture2d(pixelData);
 

@@ -26,3 +26,4 @@ D:\kelso\Repositories\Processing.Net\Processing.Controls.Wpf\obj\Debug\Processin
 D:\kelso\Repositories\Processing.Net\Processing.Controls.Wpf\obj\Debug\Processing.Controls.Wpf.csproj.GenerateResource.Cache
 D:\kelso\Repositories\Processing.Net\Processing.Controls.Wpf\obj\Debug\Processing.Controls.Wpf.dll
 D:\kelso\Repositories\Processing.Net\Processing.Controls.Wpf\obj\Debug\Processing.Controls.Wpf.pdb
+D:\kelso\Repositories\Processing.Net\Processing.Controls.Wpf\obj\Debug\Processing.Controls.Wpf.csproj.CoreCompileInputs.cache

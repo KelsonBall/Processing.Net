@@ -7,21 +7,18 @@ namespace Processing.OpenTk.Core.Rendering
 {    
     public interface IRenderer2d
     {
-        IRenderer2d BeginDraw();
-        IRenderer2d EndDraw();
-
         IStyle Style { get; set; }
 
-        IRenderer2d Background(Color4 color);
-        IRenderer2d Triangle(PVector a, PVector b, PVector c);
-        IRenderer2d Rectangle(PVector position, PVector size);
-        IRenderer2d Quad(PVector a, PVector b, PVector c, PVector d);
-        IRenderer2d Ellipse(PVector position, PVector size);
-        IRenderer2d Line(PVector a, PVector b);
-        IRenderer2d Arc(PVector position, PVector size, float startAngle, float sweepAngle);
-        IRenderer2d Image(Texture2d image, PVector position);
-        IRenderer2d Text(string text, PVector position);
-        IRenderer2d Shape(PVector position, params PVector[] points);
+        void Background(Color4 color);
+        void Triangle(PVector a, PVector b, PVector c);
+        void Rectangle(PVector position, PVector size);
+        void Quad(PVector a, PVector b, PVector c, PVector d);
+        void Ellipse(PVector position, PVector size);
+        void Line(PVector a, PVector b);
+        void Arc(PVector position, PVector size, float startAngle, float sweepAngle);
+        void Image(Texture2d image, PVector position);
+        void Text(string text, PVector position);
+        void Shape(PVector position, params PVector[] points);
 
     }
 }

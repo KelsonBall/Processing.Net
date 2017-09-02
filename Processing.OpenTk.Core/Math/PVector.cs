@@ -1,4 +1,5 @@
-﻿using static System.Math;
+﻿using OpenTK;
+using static System.Math;
 
 namespace Processing.OpenTk.Core.Math
 {
@@ -58,6 +59,14 @@ namespace Processing.OpenTk.Core.Math
         {
             return a.Scale(1 / b);
         }
+
+        public static implicit operator Vector2(PVector p) => new Vector2((float)p.X, (float)p.Y);
+
+        public static implicit operator PVector(Vector2 v) => new PVector(v.X, v.Y);
+
+        public static implicit operator PVector((double x, double y) p) => new PVector(p.x, p.y);
+
+        public PVector3 ToVector3() => new PVector3(X, Y, 0);
 
         public PVector Add(PVector to)
         {
