@@ -36,10 +36,10 @@ namespace Processing.OpenTk.Core
             base.OnLoad(e);
 
             GL.Viewport(ClientRectangle.X, ClientRectangle.Y, ClientRectangle.Width, ClientRectangle.Height);
-            //GL.Ortho(0, DisplayDevice.Default.Width, DisplayDevice.Default.Height, 0, -1, 1);
             GL.ClearColor(Color.CornflowerBlue);
-
-            //GL.Enable(EnableCap.Texture2D);            
+            
+            GL.Enable(EnableCap.Blend);
+            GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
 
             Setup?.Invoke(this);
         }
@@ -48,10 +48,7 @@ namespace Processing.OpenTk.Core
         {
             base.OnResize(e);
 
-            GL.Viewport(ClientRectangle.X, ClientRectangle.Y, ClientRectangle.Width, ClientRectangle.Height);
-            //Width = ClientRectangle.Width;
-            //Height = ClientRectangle.Height;
-            //GL.Ortho(0, Width, Height, 0, 0, 1);            
+            GL.Viewport(ClientRectangle.X, ClientRectangle.Y, ClientRectangle.Width, ClientRectangle.Height);                    
         }
 
         protected override void OnUpdateFrame(FrameEventArgs e)
@@ -76,22 +73,21 @@ namespace Processing.OpenTk.Core
             SwapBuffers();
         }
 
-        #region Renderer 2d
-        private readonly Renderer2d _renderer2d = new Renderer2d();
+        #region Renderer 2d        
         
         public void Background(Color4 color)
         {
-            _renderer2d.Background(color);
+            GL.ClearColor(color);
         }
 
         public void Triangle(PVector a, PVector b, PVector c)
         {
-            _renderer2d.Triangle(a, b, c);
+            throw new NotImplementedException();
         }
 
         public void Rectangle(PVector position, PVector size)
         {
-            _renderer2d.Rectangle(position, size);
+            throw new NotImplementedException();
         }
 
         public void Quad(PVector a, PVector b, PVector c, PVector d)
@@ -115,8 +111,33 @@ namespace Processing.OpenTk.Core
         }
 
         public void Image(PImage image, PVector position)
-        {
-            _renderer2d.Image(image, position);
+        {            
+            GL.PushMatrix();
+            {
+                GL.LoadIdentity();
+                GL.Ortho(0, Width, Height, 0, 0, 1);
+                GL.Translate(position.ToVector3());
+                GL.Disable(EnableCap.Lighting);
+                GL.Enable(EnableCap.Texture2D);
+
+                GL.BindTexture(TextureTarget.Texture2D, image);
+                {
+                    GL.Begin(PrimitiveType.Quads);
+                    {
+                        GL.TexCoord2(1f, 1f);
+                        GL.Vertex2(image.Width, image.Height);
+                        GL.TexCoord2(0f, 1f);
+                        GL.Vertex2(0, image.Height);
+                        GL.TexCoord2(0f, 0f);
+                        GL.Vertex2(0, 0);
+                        GL.TexCoord2(1.0f, 0.0f);
+                        GL.Vertex2(image.Width, 0);
+                    }
+                    GL.End();
+                }
+                GL.BindTexture(TextureTarget.Texture2D, 0);
+            }
+            GL.PopMatrix();            
         }
 
         public void Text(string text, PVector position)

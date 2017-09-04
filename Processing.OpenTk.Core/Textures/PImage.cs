@@ -3,9 +3,7 @@ using System.IO;
 using ImageSharp;
 using ImageSharp.Processing;
 using SixLabors.Primitives;
-using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
-using static OpenTK.DisplayDevice;
 using Processing.OpenTk.Core.Extensions;
 
 namespace Processing.OpenTk.Core.Textures
@@ -25,37 +23,20 @@ namespace Processing.OpenTk.Core.Textures
             Width = source.Width;
             Height = source.Height;
 
-            GL.GenTextures(1, out Handle);            
-            RenderToFrameBufferTexture();
-        }
+            GL.Enable(EnableCap.Texture2D);
+            GL.GenTextures(1, out Handle);
+            GL.BindTexture(TextureTarget.Texture2D, Handle);
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (float)TextureMagFilter.Nearest);
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (float)TextureMinFilter.Nearest);
 
-        private void RenderToFrameBufferTexture()
-        {
-            uint bufferHandle;
-            GL.GenFramebuffers(1, out bufferHandle);
-            GL.BindFramebuffer(FramebufferTarget.Framebuffer, bufferHandle);
+            GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, Width, Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, IntPtr.Zero);
+            WithDataPtr(dataptr =>
             {
-                GL.BindTexture(TextureTarget.Texture2D, Handle);                
-                GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (float)TextureMagFilter.Nearest);
-                GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (float)TextureMinFilter.Nearest);
+                GL.TexSubImage2D(TextureTarget.Texture2D, 0, 0, 0, Width, Height, PixelFormat.Rgba, PixelType.UnsignedByte, dataptr);
+            });
 
-                GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, Width, Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, IntPtr.Zero);
-
-                GL.FramebufferTexture2D(FramebufferTarget.Framebuffer, FramebufferAttachment.ColorAttachment0, TextureTarget.Texture2D, Handle, 0);
-                GL.DrawBuffers(1, new[] { DrawBuffersEnum.ColorAttachment0 });
-
-                if (GL.CheckFramebufferStatus(FramebufferTarget.Framebuffer) != FramebufferErrorCode.FramebufferComplete)
-                    throw new InvalidOperationException();
-
-                GL.Viewport(0, 0, Width, Height);
-                {
-                    GL.ClearColor(Color4.Aquamarine);
-                    WithDataPtr(dataptr => GL.DrawPixels(Width, Height, PixelFormat.Rgba, PixelType.UnsignedByte, dataptr));
-                }
-                GL.Viewport(0, 0, Default.Width, Default.Height);
-            }
-            GL.BindFramebuffer(FramebufferTarget.Framebuffer, 0);            
-        }
+            GL.BindTexture(TextureTarget.Texture2D, 0);
+        }       
 
         public static implicit operator uint (PImage image) => image.Handle;
 
@@ -66,9 +47,7 @@ namespace Processing.OpenTk.Core.Textures
             Mode = ResizeMode.Stretch
         };
 
-        public PImage Resize(int newWidth, int newHeight) => WithImageCopy(copy => GetResizer(newWidth, newHeight).Then(copy.Resize).Then(FromImage));
-
-        public PImage Rotate(float angle) => WithImageCopy(copy => copy.Rotate(angle).Then(FromImage));
+        public PImage Resize(int newWidth, int newHeight) => WithImageCopy(copy => GetResizer(newWidth, newHeight).Then(copy.Resize).Then(FromImage));        
 
         public static PImage FromSteam(Func<Stream> streamSource)
         {
@@ -85,7 +64,7 @@ namespace Processing.OpenTk.Core.Textures
             int[] data = new int[image.Pixels.Length];
 
             int outIndex = 0;
-            for (int row = image.Height - 1; row >= 0; row--)
+            for (int row = 0; row < image.Height; row++)
             {
                 for (int column = 0; column < image.Width; column++)
                 {
