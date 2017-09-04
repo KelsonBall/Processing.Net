@@ -17,7 +17,7 @@ namespace Processing.OpenTk.Core.Rendering
         IRenderer3d Quad(PVector3 a, PVector3 b, PVector3 c, PVector3 d);
         IRenderer3d Ellipsoid(PVector3 position, PVector3 size);
         IRenderer3d Line(PVector3 a, PVector3 b);        
-        IRenderer3d Image(Texture2d image, PVector3 position, PVector3 normal);
+        IRenderer3d Image(PImage image, PVector3 position, PVector3 normal);
         IRenderer3d Text(string text, PVector3 position, PVector3 normal);
         IRenderer3d Shape(PVector3 position, params PVector3[] points);
 

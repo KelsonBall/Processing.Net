@@ -4,6 +4,7 @@ using OpenTK.Graphics.OpenGL;
 using static System.Math;
 using Processing.OpenTk.Core.Math;
 using Processing.OpenTk.Core.Textures;
+using OpenTK;
 
 namespace Processing.OpenTk.Core.Rendering
 {
@@ -18,7 +19,7 @@ namespace Processing.OpenTk.Core.Rendering
 
         public void Background(Color4 color)
         {
-            GL.ClearColor(color);        
+            GL.ClearColor(color);
         }
 
         public void Ellipse(PVector position, PVector size)
@@ -28,33 +29,32 @@ namespace Processing.OpenTk.Core.Rendering
             throw new NotImplementedException();
         }
 
-        public void Image(Texture2d image, PVector position)
+        public void Image(PImage image, PVector position)
         {
             GL.PushMatrix();
+            {
+                GL.LoadIdentity();
+                GL.Ortho(0, DisplayDevice.Default.Width, DisplayDevice.Default.Height, 0, -1, 1);
+                GL.Translate(position.ToVector3());
+                GL.Disable(EnableCap.Lighting);
 
-            GL.Translate(position.ToVector3());
-            
-            GL.Enable(EnableCap.Texture2D);
-            GL.Enable(EnableCap.Blend);            
-            GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);            
-            GL.Enable(EnableCap.DepthTest);
-
-            GL.Color3(1, 0, 0);
-            GL.BindTexture(TextureTarget.Texture2D, image.Handle);
-            GL.Begin(PrimitiveType.Quads);            
-            GL.TexCoord2(0, 0);
-            GL.Vertex2(0, 0);            
-            GL.TexCoord2(0, 1);
-            GL.Vertex2(0, image.Height);            
-            GL.TexCoord2(1, 1);
-            GL.Vertex2(image.Width, image.Height);            
-            GL.TexCoord2(1, 0);
-            GL.Vertex2(image.Width, 0);
-            GL.End();
-
-            GL.BindTexture(TextureTarget.Texture2D, 0);
-            GL.Disable(EnableCap.Texture2D);
-
+                GL.BindTexture(TextureTarget.Texture2D, image);
+                {
+                    GL.Begin(PrimitiveType.Quads);
+                    {
+                        GL.TexCoord2(1f, 1f);
+                        GL.Vertex2(image.Width, image.Height);
+                        GL.TexCoord2(0f, 1f);
+                        GL.Vertex2(0, image.Height);
+                        GL.TexCoord2(0f, 0f);
+                        GL.Vertex2(0, 0);
+                        GL.TexCoord2(1.0f, 0.0f);
+                        GL.Vertex2(image.Width, 0);
+                    }
+                    GL.End();
+                }
+                GL.BindTexture(TextureTarget.Texture2D, 0);
+            }     
             GL.PopMatrix();
         }
 

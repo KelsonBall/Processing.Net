@@ -16,7 +16,7 @@ namespace Processing.OpenTk.Core.Rendering
         void Ellipse(PVector position, PVector size);
         void Line(PVector a, PVector b);
         void Arc(PVector position, PVector size, float startAngle, float sweepAngle);
-        void Image(Texture2d image, PVector position);
+        void Image(PImage image, PVector position);
         void Text(string text, PVector position);
         void Shape(PVector position, params PVector[] points);
 

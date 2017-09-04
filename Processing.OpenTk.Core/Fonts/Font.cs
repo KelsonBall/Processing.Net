@@ -11,7 +11,7 @@ namespace Processing.OpenTk.Core
     {
         private readonly FontGenerator _generator;
 
-        private Dictionary<char, Texture2d> _cache = new Dictionary<char, Texture2d>();
+        private Dictionary<char, PImage> _cache = new Dictionary<char, PImage>();
 
         private readonly float _size;
         private readonly Color4 _color;
@@ -23,7 +23,7 @@ namespace Processing.OpenTk.Core
             _color = color;
         }
 
-        public Texture2d this[char c]
+        public PImage this[char c]
         {
             get
             {

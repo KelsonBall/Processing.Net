@@ -22,8 +22,11 @@ namespace Processing.OpenTk.Core
 
         public event Action<Canvas> Draw;
 
+        public int MouseX { get; protected set; }
+        public int MouseY { get; protected set; }
+
         #endregion
-        public Canvas(int sizex, int sizey) : base(sizex, sizey, GraphicsMode.Default)
+        public Canvas(int sizex, int sizey) : base(sizex, sizey, GraphicsMode.Default, "Image Render")
         {
             VSync = VSyncMode.On;
         }
@@ -32,8 +35,12 @@ namespace Processing.OpenTk.Core
         {
             base.OnLoad(e);
 
+            GL.Viewport(ClientRectangle.X, ClientRectangle.Y, ClientRectangle.Width, ClientRectangle.Height);
+            //GL.Ortho(0, DisplayDevice.Default.Width, DisplayDevice.Default.Height, 0, -1, 1);
             GL.ClearColor(Color.CornflowerBlue);
-            
+
+            //GL.Enable(EnableCap.Texture2D);            
+
             Setup?.Invoke(this);
         }
 
@@ -42,11 +49,16 @@ namespace Processing.OpenTk.Core
             base.OnResize(e);
 
             GL.Viewport(ClientRectangle.X, ClientRectangle.Y, ClientRectangle.Width, ClientRectangle.Height);
+            //Width = ClientRectangle.Width;
+            //Height = ClientRectangle.Height;
+            //GL.Ortho(0, Width, Height, 0, 0, 1);            
         }
 
         protected override void OnUpdateFrame(FrameEventArgs e)
         {
-            base.OnUpdateFrame(e);            
+            base.OnUpdateFrame(e);
+            MouseX = Mouse.X;
+            MouseY = Mouse.Y;
 
             if (Keyboard[Key.Escape])
                 Exit();
@@ -102,7 +114,7 @@ namespace Processing.OpenTk.Core
             throw new NotImplementedException();
         }
 
-        public void Image(Texture2d image, PVector position)
+        public void Image(PImage image, PVector position)
         {
             _renderer2d.Image(image, position);
         }

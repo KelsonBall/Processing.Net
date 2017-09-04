@@ -4,10 +4,10 @@ namespace Processing.OpenTk.Core.Textures
 {
     public class TextureMap
     {
-        public readonly Texture2d Texture;
+        public readonly PImage Texture;
         public readonly PVector3[] UvVerticies;
 
-        public TextureMap(Texture2d texture, PVector3[] uvVerticies)
+        public TextureMap(PImage texture, PVector3[] uvVerticies)
         {
             Texture = texture;
             UvVerticies = uvVerticies;
