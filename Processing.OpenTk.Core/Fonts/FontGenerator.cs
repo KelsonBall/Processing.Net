@@ -30,7 +30,7 @@ namespace Processing.OpenTk.Core
 
                 byte scalarAt(int x, int y) => data[FlatIndex(x, y)];
 
-                byte alphaAt(int x, int y) => (byte)(scalarAt(x, y) * color.A);
+                float alphaAt(int x, int y) => (scalarAt(x, y) * color.A) / 255f;
 
                 Color4 colorAt(int x, int y) => new Color4(color.R, color.G, color.B, alphaAt(x, y));
 
